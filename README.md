@@ -17,7 +17,8 @@ pkg-local targetPath
   "name": "example",
   "version": "1.0.0",
   "main": "dist/index.js",
-  "types": "dist/index.d.ts"
+  "types": "dist/index.d.ts",
+  "bin":{"abc":"dist/abc.js"}
 }
 ```
 
@@ -31,7 +32,8 @@ pkg-local targetPath
   "name": "example",
   "version": "1.0.0",
   "main": "index.js",
-  "types": "index.d.ts"
+  "types": "index.d.ts",
+  "bin":{"abc":"abc.js"}
 }
 ```
 

@@ -9,9 +9,16 @@ try {
   const pkg = JSON.parse(fs.readFileSync("package.json").toString()) as {
     main?: string;
     types?: string;
+    bin?: { [key: string]: string };
   };
   if (pkg.main) pkg.main = path.relative(process.argv[2], pkg.main);
   if (pkg.types) pkg.types = path.relative(process.argv[2], pkg.types);
+  if (pkg.bin) {
+    const bin: { [key: string]: string } = {};
+    for (const [key, value] of Object.entries(pkg.bin))
+      bin[key] = path.relative(process.argv[2], value);
+      pkg.bin = bin;
+  }
 
   fs.writeFileSync(
     path.resolve(process.argv[2], "package.json"),
