@@ -1,6 +1,6 @@
 {
   "name": "pkg-local",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Generate package.json for local package",
   "bin": {
     "pkg-local": "dist/index.js"
