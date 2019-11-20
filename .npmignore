@@ -1,0 +1,5 @@
+*.tsbuildinfo
+/src
+/test
+node_modules
+.github

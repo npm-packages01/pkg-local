@@ -1,0 +1,29 @@
+{
+  "name": "pkg-local",
+  "version": "1.0.0",
+  "description": "Generate package.json for local package",
+  "bin": {
+    "pkg-local": "dist/index.js"
+  },
+  "scripts": {
+    "run": "node dist/index.js dist",
+    "build": "tsc -b src",
+    "watch": "tsc -b src -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "SoraKumo",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^3.7.2",
+    "@types/node": "^12.12.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/npm-packages01/pkg-local.git"
+  },
+  "bugs": {
+    "url": "https://github.com/npm-packages01/pkg-local/issues"
+  },
+  "homepage": "https://github.com/npm-packages01/pkg-local#readme"
+}
