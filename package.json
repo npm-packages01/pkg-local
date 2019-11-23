@@ -6,7 +6,7 @@
     "pkg-local": "dist/index.js"
   },
   "scripts": {
-    "run": "node dist/index.js dist2",
+    "run": "node dist/index.js dist",
     "build": "tsc -b src",
     "watch": "tsc -b src -w",
     "test": "echo \"Error: no test specified\" && exit 1"

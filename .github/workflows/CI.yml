@@ -19,22 +19,15 @@ jobs:
         run: yarn install
       - name: build
         run: yarn build
-      - name: version devel
-        uses: SoraKumo001/actions-package-version-prefix@release
-        if: contains(github.ref, 'tags/dev')
-        with:
-          prefix: -devel
-      - name: publish devel
-        if: contains(github.ref, 'tags/dev')
+      - name: update npm version
+        if: contains(github.ref, 'refs/tags')
+        uses: SoraKumo001/actions-npm-version-update@release
+      - name: publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        if: contains(github.ref, 'refs/tags')
         run: |
+          a=($(echo "refs/tags/lastest-1.0.0" | sed -n -r 's/^refs\/tags\/(.*?)-(.*?).*$/\1 \2/p')) tag=${a[0]} version=${a[1]}
+          echo public [$tag] [$version]
           npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
-          npm publish --tag=devel
-      - name: publish release
-        if: contains(github.ref, 'tags/v')
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
-          npm publish
+          npm publish --tag $tag
